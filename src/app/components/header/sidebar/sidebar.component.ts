@@ -12,7 +12,7 @@ export class SidebarComponent implements OnInit {
   
   menuItems = [
     { name: 'Dashboard', icon: 'dashboard', route: '/dashboard' },
-    { name: 'Tanques', icon: 'pool', route: '/tanques' },
+    { name: 'Tanques', icon: 'waves', route: '/tanques' },
     { name: 'Ciclos de Produção', icon: 'sync', route: '/ciclos-producao' },
     { name: 'Qualidade da Água', icon: 'opacity', route: '/qualidade-agua' },
     { name: 'Financeiro', icon: 'attach_money', route: '/financeiro' },

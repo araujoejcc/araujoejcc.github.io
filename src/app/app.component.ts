@@ -9,7 +9,7 @@ import { SidebarService } from './core/services/sidebar.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Sistema de Gestão para Carinicultura';
+  title = 'Sistema de Gestão para Carcinicultura';
   isLoggedIn$: Observable<boolean>;
   sidebarCollapsed = false;
 
