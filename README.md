@@ -2,9 +2,9 @@
 
 https://araujoejcc.github.io/
 
-# Estrutura do Projeto Angular para Sistema de Gestão de Carinicultura
+# Estrutura do Projeto Angular para Sistema de Gestão de Carcinicultura
 
-Este documento apresenta a estrutura do frontend do sistema de gestão para carinicultura, desenvolvido em Angular.
+Este documento apresenta a estrutura do frontend do sistema de gestão para carcinicultura, desenvolvido em Angular.
 
 ## Organização de Diretórios
 
