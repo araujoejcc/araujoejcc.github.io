@@ -29,7 +29,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/404.html",
-              "src/CNAME"
+              "src/CNAME",
+              ".nojekyll"
             ],
             "styles": [
               "src/styles.scss"
@@ -38,7 +39,7 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "/",
+              "baseHref": "/fazenda-peixe-azul-app/",
               "budgets": [
                 {
                   "type": "initial",
@@ -105,7 +106,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "/"
+            "baseHref": "/fazenda-peixe-azul-app/"
           }
         }
       }
