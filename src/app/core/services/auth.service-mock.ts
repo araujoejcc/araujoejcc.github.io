@@ -44,10 +44,17 @@ export class AuthServiceMock {
       return of(this.mockUserResponse).pipe(
         delay(500),
         tap(response => {
+          // Limpar quaisquer dados antigos
+          localStorage.removeItem(this.tokenKey);
+          localStorage.removeItem(this.userKey);
+          
+          // Armazenar novos dados
           localStorage.setItem(this.tokenKey, response.token);
           localStorage.setItem(this.userKey, JSON.stringify(response.usuario));
+          
+          // Atualizar estado de login
           this.isLoggedInSubject.next(true);
-          console.log('Login successful');
+          console.log('Login successful, token stored:', response.token);
         })
       );
     }
@@ -57,23 +64,27 @@ export class AuthServiceMock {
   }
 
   logout(): void {
+    console.log('Logout called');
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.userKey);
     this.isLoggedInSubject.next(false);
-    this.router.navigate(['/auth/login']);
   }
 
   getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
+    const token = localStorage.getItem(this.tokenKey);
+    console.log('getToken called, token:', token);
+    return token;
   }
 
   isLoggedIn(): Observable<boolean> {
-    console.log('isLoggedIn called, current value:', this.isLoggedInSubject.value);
+    const loggedIn = this.hasToken();
+    console.log('isLoggedIn called, current value:', loggedIn);
     return this.isLoggedInSubject.asObservable();
   }
 
   private hasToken(): boolean {
-    const hasToken = !!this.getToken();
+    const token = this.getToken();
+    const hasToken = !!token;
     console.log('hasToken check result:', hasToken);
     return hasToken;
   }

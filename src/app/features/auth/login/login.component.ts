@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   error = '';
-  returnUrl: string = '/';
+  returnUrl: string = '/dashboard';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,13 +24,16 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Deslogar o usuário para garantir um estado limpo
+    this.authService.logout();
+    
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       senha: ['', Validators.required]
     });
 
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    // get return url from route parameters or default to '/dashboard'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
   }
 
   // convenience getter for easy access to form fields
@@ -56,9 +59,11 @@ export class LoginComponent implements OnInit {
     )
     .subscribe({
       next: () => {
+        console.log('Login bem-sucedido, navegando para:', this.returnUrl);
         this.router.navigate([this.returnUrl]);
       },
       error: error => {
+        console.error('Erro no login:', error);
         this.error = error?.error?.message || 'Usuário ou senha inválidos';
       }
     });

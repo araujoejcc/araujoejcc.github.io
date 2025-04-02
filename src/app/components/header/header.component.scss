@@ -46,6 +46,7 @@
   margin: 0;
   font-size: 1.5rem;
   font-weight: 500;
+  color: white !important; /* Garantindo que o título seja branco com !important */
 }
 
 .nav {
@@ -71,6 +72,7 @@
 @media (max-width: 768px) {
   .logo h1 {
     font-size: 1.2rem;
+    color: white !important; /* Mantendo o título branco mesmo em telas menores com !important */
   }
   
   .header-content {
