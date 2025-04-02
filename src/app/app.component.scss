@@ -1,17 +1,35 @@
 .app-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .main-content {
-    display: flex;
-    flex: 1;
-    margin-top: 60px; // Altura do header
-  }
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  margin-top: 60px; // Altura do header
+}
+
+.content-wrapper {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease;
+  width: 100%;
+}
+
+@media (min-width: 769px) {
   .content-wrapper {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
+    margin-left: 250px; // Largura do sidebar expandido
   }
+
+  .content-wrapper.sidebar-collapsed {
+    margin-left: 60px; // Largura do sidebar recolhido
+  }
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    margin-left: 0;
+  }
+}

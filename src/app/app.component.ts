@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
 import { Observable } from 'rxjs';
+import { SidebarService } from './core/services/sidebar.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,18 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'Sistema de Gestão para Carinicultura';
   isLoggedIn$: Observable<boolean>;
+  sidebarCollapsed = false;
 
-  constructor(private authService: AuthService) {
-    console.log('AppComponent initialized');
+  constructor(
+    private authService: AuthService,
+    private sidebarService: SidebarService
+  ) {
     this.isLoggedIn$ = this.authService.isLoggedIn();
-    console.log('AuthService initialized');
   }
 
   ngOnInit(): void {
+    this.sidebarService.sidebarState$.subscribe(state => {
+      this.sidebarCollapsed = state.collapsed;
+    });
   }
 }
